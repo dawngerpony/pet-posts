@@ -29,6 +29,13 @@ poetry run jurigged app.py
 poetry run python -m jurigged app.py
 ```
 
+## Backlog
+
+- Allow the retrieval of a specific animal type e.g. `/pet fox`
+- Show all animal types e.g. `/pets`
+- Migrate image URLs into a proper database
+- Integrate with various Twitter accounts to build up database of animals
+
 ## Resources
 
 The following resources were helpful to me when building this bot:
