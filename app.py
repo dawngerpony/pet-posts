@@ -1,4 +1,6 @@
+#!/usr/bin/env python3
 from dotenv import load_dotenv
+from pet_posts.handlers import echo, pet, start
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 import logging
@@ -18,31 +20,12 @@ def main():
     dispatcher = updater.dispatcher
     start_handler = CommandHandler("start", start)
     dispatcher.add_handler(start_handler)
+    # Handle all text except /<command> messages
     echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
     dispatcher.add_handler(echo_handler)
     pet_handler = CommandHandler("pet", pet)
     dispatcher.add_handler(pet_handler)
     updater.start_polling()
-
-
-def start(update, context):
-    """Respond to '/start' command."""
-    context.bot.send_message(
-        chat_id=update.effective_chat.id, text="I'm a banana, please talk to me!"
-    )
-
-
-def echo(update, context):
-    """Echo back the contents of a message."""
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
-
-
-def pet(update, context):
-    """Send a cute picture."""
-    # text = "Image coming soon banana"
-    # context.bot.send_message(chat_id=update.effective_chat.id, text=text)
-    url = "https://www.zastavki.com/pictures/originals/2015/Animals___Rodents_____Hamster_on_a_rope_092822_.jpg"
-    context.bot.send_photo(chat_id=update.effective_chat.id, photo=url)
 
 
 if __name__ == "__main__":
