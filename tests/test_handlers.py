@@ -18,5 +18,7 @@ def test_echo(mocker):
 def test_pet(mocker):
     update = mocker.Mock()
     context = mocker.Mock()
+    get_image_url = mocker.patch("pet_posts.handlers.get_image_url")
     pet(update, context)
     context.bot.send_photo.assert_called_once()
+    get_image_url.assert_called_once()

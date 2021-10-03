@@ -1,5 +1,5 @@
 """Bot handler functions."""
-import random
+from pet_posts.images import get_image_url
 
 
 def start(update, context):
@@ -16,11 +16,5 @@ def echo(update, context):
 
 def pet(update, context):
     """Send a cute picture."""
-    urls = [
-        "https://www.southamerica.travel/wp-content/uploads/2018/02/10-amazing-facts-about-Capybara-1.jpg",
-        "https://www.zastavki.com/pictures/originals/2015/Animals___Rodents_____Hamster_on_a_rope_092822_.jpg",
-        "https://s-i.huffpost.com/gen/2034584/images/o-PUDDING-THE-FOX-facebook.jpg",
-        "https://www.zooeasy.com/wp-content/uploads/2019/07/jack-catalano-q1pw1dOW0_0-unsplash.jpg",
-        "https://i.huffpost.com/gen/911965/images/o-CUTEST-BABY-ANIMAL-facebook.jpg",
-    ]
-    context.bot.send_photo(chat_id=update.effective_chat.id, photo=random.choice(urls))
+    image_url = get_image_url()
+    context.bot.send_photo(chat_id=update.effective_chat.id, photo=image_url)
