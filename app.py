@@ -16,6 +16,7 @@ def main():
     )
 
     updater = bot.init(api_token)
+    bot.configure(updater.dispatcher)
     bot.run(updater)
 
 
