@@ -2,6 +2,8 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+![build](https://github.com/dawngerpony/pet-posts/actions/workflows/build/badge.svg)
+
 A Telegram bot to post cute animal pictures.
 
 ## To get set up locally
