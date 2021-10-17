@@ -15,21 +15,6 @@ class TwitterClient:
     def get_user_id(self, username: str):
         return self.__client.get_user(username=username).data.id
 
-    # def get_tweet_texts(self, username: str, limit: int = 10) -> list[str]:
-    #     user_id = self.get_user_id(username)
-    #     tweet_texts: list[str] = []
-    #     for tweet in tweepy.Paginator(
-    #         self.__client.get_users_tweets,
-    #         user_id,
-    #         expansions="attachments.media_keys",
-    #         media_fields="preview_image_url,url",
-    #         max_results=5,
-    #     ).flatten(limit=limit):
-    #         ic(tweet)
-    #         ic(tweet.includes)
-    #         tweet_texts.append(tweet.text)
-    #     return tweet_texts
-
     def get_image_urls_for_user(self, username: str, limit: int = 10) -> list[str]:
         user_id = self.get_user_id(username)
         tweet_ids: list[str] = []
@@ -42,17 +27,6 @@ class TwitterClient:
         image_urls = self.get_image_urls_for_tweets(tweet_ids)
         return image_urls
 
-    # def get_text_for_tweet(self, tweet_id: str):
-    #     resp = self.__client.get_tweet(
-    #         tweet_id,
-    #         expansions="attachments.media_keys",
-    #         media_fields="preview_image_url,url",
-    #     )
-    #     ic(resp)
-    #     ic(resp.data)
-    #     ic(resp.includes["media"][0].url)
-    #     return resp.data.text
-
     def get_image_urls_for_tweets(self, tweet_ids: list[str]):
         resp = self.__client.get_tweets(
             tweet_ids,
@@ -63,12 +37,6 @@ class TwitterClient:
         for media in resp.includes["media"]:
             image_urls.append(media.url)
         return image_urls
-
-    # def get_text_for_tweets(self, tweet_ids: list[str]):
-    #     resp = self.__client.get_tweets(tweet_ids)
-    #     for tweet in resp.data:
-    #         ic(tweet.text)
-    #     return [t.text for t in resp.data]
 
 
 def main():
