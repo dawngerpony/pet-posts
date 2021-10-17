@@ -62,5 +62,6 @@ The following resources were helpful to me when building this bot:
 - https://core.telegram.org/bots#6-botfather
 - https://github.com/koxudaxi/poetry-pycharm-plugin
 - https://pythonawesome.com/hot-reloading-for-python/
+- https://towardsdatascience.com/how-to-deploy-a-telegram-bot-using-heroku-for-free-9436f89575d2
 
 [jurigged]: https://pypi.org/project/jurigged/
